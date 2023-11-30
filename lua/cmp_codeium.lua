@@ -18,13 +18,7 @@ local function code2cmp(comp,offset)
         textEdit={newText=text:sub(offset),insert=range,replace=range},
     }
 end
-function source.new()
-    if not codeium_started then
-        vim.fn['codeium#server#Start']()
-        codeium_started=true
-    end
-    return setmetatable({},{__index=source})
-end
+function source.new() return setmetatable({},{__index=source}) end
 function source.complete(_,params,callback)
     local offset=params.offset
     local data={
