@@ -15,7 +15,7 @@ function source.complete(_,params,callback)
         }
         return {
             documentation={kind='markdown',value=('```%s\n%s\n```'):format(vim.o.filetype,text)},
-            label=vim.trim(text),
+            label=vim.trim(text:sub(params.offset)),
             textEdit={newText=text:sub(params.offset),insert=range,replace=range},
         }
     end
